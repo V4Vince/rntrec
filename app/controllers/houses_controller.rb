@@ -1,10 +1,11 @@
-class HousesController < ApplicationController
+class HousesController < ProtectedController
   before_action :set_house, only: [:show, :update, :destroy]
 
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
+    @houses = current_user.houses.all
+    # @houses = House.all
 
     render json: @houses
   end
@@ -19,9 +20,10 @@ class HousesController < ApplicationController
   # POST /houses.json
   def create
     @house = House.new(house_params)
+    @house.user_id = current_user.id
 
     if @house.save
-      render json: @house, status: :created, location: @house
+      render json: @houses, status: :created, location: @house
     else
       render json: @house.errors, status: :unprocessable_entity
     end
@@ -54,6 +56,7 @@ class HousesController < ApplicationController
     end
 
     def house_params
-      params[:house]
+      params.require(:houses).permit(:street_name, :num_units, :purchase_price, :current_price, :user_id)
     end
+
 end
