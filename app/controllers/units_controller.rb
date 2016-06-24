@@ -1,10 +1,10 @@
-class UnitsController < ApplicationController
+class UnitsController < ProtectedController
   before_action :set_unit, only: [:show, :update, :destroy]
 
   # GET /units
   # GET /units.json
   def index
-    @units = Unit.all
+    @units = current_user.units.all
 
     render json: @units
   end
@@ -12,7 +12,7 @@ class UnitsController < ApplicationController
   # GET /units/1
   # GET /units/1.json
   def show
-    render json: @unit
+    render json: Unit.find(params[:id])
   end
 
   # POST /units
@@ -54,6 +54,6 @@ class UnitsController < ApplicationController
     end
 
     def unit_params
-      params[:unit]
+      params.require(:units).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking, :expense, :house_id)
     end
 end
