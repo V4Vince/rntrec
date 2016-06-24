@@ -1,4 +1,5 @@
 class HousesController < ProtectedController
+# class HousesController < ApplicationController
   before_action :set_house, only: [:show, :update, :destroy]
 
   # GET /houses
