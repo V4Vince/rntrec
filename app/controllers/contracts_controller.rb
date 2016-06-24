@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
+    @contracts = current_user.contracts.all
 
     render json: @contracts
   end
@@ -54,6 +54,6 @@ class ContractsController < ApplicationController
     end
 
     def contract_params
-      params[:contract]
+      params.require(:contracts).permit(:start, :end, :num_tenants, :rent, :security, :unit_id)
     end
 end
