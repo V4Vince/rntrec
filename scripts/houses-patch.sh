@@ -1,5 +1,5 @@
 #!/bin/bash
-TOKEN=BAhJIiVhYzAxZWRjYjVlZjk2OGFiYTRkZjlmZDJmNDFmZWJjMgY6BkVG--2e405ed51a10ffed07182ac3e2263c65161e593c
+TOKEN=BAhJIiUyNDIwYTVhMzQ0N2ExOTg0ZDAxYTNiNDY2OTA4NzNlMgY6BkVG--7eb018240bdc6185dda0f272420e6da0f16f200f
 ID=2
 
 curl --include --request PATCH http://localhost:3000/houses/$ID \
@@ -7,7 +7,7 @@ curl --include --request PATCH http://localhost:3000/houses/$ID \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
       "houses": {
-        "street_name": "256 Princeton Blvd"
+        "street_name": "258 Princeton Blvd"
     }
   }'
 

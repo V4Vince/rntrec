@@ -14,14 +14,13 @@ class HousesController < ProtectedController
   # GET /houses/1
   # GET /houses/1.json
   def show
-    render json: @house
+    render json: House.find(params[:id])
   end
 
   # POST /houses
   # POST /houses.json
   def create
-    @house = House.new(house_params)
-    @house.user_id = current_user.id
+    @house = current_user.houses.build(house_params)
 
     if @house.save
       render json: @houses, status: :created, location: @house
@@ -53,7 +52,8 @@ class HousesController < ProtectedController
   private
 
     def set_house
-      @house = House.find(params[:id])
+      # @house = House.find(params[:id])
+      @house = current_user.houses.find(params[:id])
     end
 
     def house_params
