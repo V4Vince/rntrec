@@ -3,7 +3,7 @@ class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :update, :destroy]
 
   # GET /houses/1/units
-  # GET /units.json
+  # GET /houses/1/units.json
   def index
     @units = Unit.where("house_id = ?", params[:house_id])
 
@@ -16,10 +16,9 @@ class UnitsController < ApplicationController
     render json: Unit.find(params[:id])
   end
 
-  # POST /units
-  # POST /units.json
+  # POST /houses/1/units
+  # POST /houses/1/units.json
   def create
-    # @unit = Unit.new(unit_params)
     @unit = House.find(params[:house_id]).units.build(unit_params)
     if @unit.save
       render json: @unit, status: :created, location: @unit
