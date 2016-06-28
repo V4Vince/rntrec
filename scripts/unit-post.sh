@@ -1,16 +1,15 @@
 #!/bin/bash
-TOKEN=BAhJIiVhYzAxZWRjYjVlZjk2OGFiYTRkZjlmZDJmNDFmZWJjMgY6BkVG--2e405ed51a10ffed07182ac3e2263c65161e593c
-
-curl --include --request POST http://localhost:3000/units \
+TOKEN=BAhJIiUyNDIwYTVhMzQ0N2ExOTg0ZDAxYTNiNDY2OTA4NzNlMgY6BkVG--7eb018240bdc6185dda0f272420e6da0f16f200f
+ID=9
+curl --include --request POST http://localhost:3000/houses/$ID/units \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "units": {
-      "unit_num": "3",
-      "num_bedrooms": "3",
-      "num_bathrooms": "1",
+      "unit_num": "1",
+      "num_bedrooms": "4",
+      "num_bathrooms": "2",
       "num_parking": "1",
-      "expense": "2100",
-      "house_id": "2"
+      "expense": "2100"
     }
   }'
