@@ -1,5 +1,5 @@
 #!/bin/bash
-TOKEN=BAhJIiUyNDIwYTVhMzQ0N2ExOTg0ZDAxYTNiNDY2OTA4NzNlMgY6BkVG--7eb018240bdc6185dda0f272420e6da0f16f200f
+TOKEN=BAhJIiViM2JmY2I2ZmI3MTg1MTkzNWIwNjljY2Q5YTkwZWY1NAY6BkVG--ebbb34d536b76e4b3f1964e8e8f267c5f0779cc1
 ID=9
 curl --include --request POST http://localhost:3000/houses/$ID/units \
   --header "Content-Type: application/json" \
