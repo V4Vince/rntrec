@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TOKEN=BAhJIiVhYzAxZWRjYjVlZjk2OGFiYTRkZjlmZDJmNDFmZWJjMgY6BkVG--2e405ed51a10ffed07182ac3e2263c65161e593c
-ID=7
+TOKEN=BAhJIiViM2JmY2I2ZmI3MTg1MTkzNWIwNjljY2Q5YTkwZWY1NAY6BkVG--ebbb34d536b76e4b3f1964e8e8f267c5f0779cc1
+ID=2
 
 curl --include --request DELETE http://localhost:3000/houses/$ID \
   --header "Authorization: Token token=$TOKEN"
