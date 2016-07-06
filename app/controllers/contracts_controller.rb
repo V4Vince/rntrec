@@ -1,12 +1,13 @@
-class ContractsController < ApplicationController
+class ContractsController < ProtectedController
   before_action :set_contract, only: [:show, :update, :destroy]
 
   # GET /units/1contracts
   # GET /units/1/contracts.json
   def index
-    @contract = Contract.where("unit_id = ?", params[:unit_id])
+    @contracts = current_user.contracts.all
+    # @contract = Contract.where("unit_id = ?", params[:unit_id])
 
-    render json: @contract
+    render json: @contracts
   end
 
   # GET /contracts/1
@@ -18,8 +19,10 @@ class ContractsController < ApplicationController
   # POST /contracts
   # POST /contracts.json
   def create
+    @contract = Contract.create(contract_params)
+
     # Unit has_one contract therefore build_contract must be called on Unit
-    @contract = Unit.find(params[:unit_id]).build_contract(contract_params)
+    # @contract = Unit.find(params[:unit_id]).build_contract(contract_params)
 
     if @contract.save
       render json: @contract, status: :created, location: @contract

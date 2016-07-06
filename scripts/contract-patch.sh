@@ -10,6 +10,5 @@ curl --include --request PATCH http://localhost:3000/contracts/$ID \
       "num_tenants": "2",
       "rent": "2000",
       "security": "6000",
-      "unit_id": "1"
     }
   }'
