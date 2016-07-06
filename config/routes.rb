@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :contracts, except: [:new, :edit]
-
   resources :units, except: [:new, :edit]
-
   resources :houses, except: [:new, :edit]
 
   resources :examples, except: [:new, :edit]
