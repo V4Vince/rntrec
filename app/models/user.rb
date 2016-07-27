@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   has_many :houses, dependent: :destroy
   has_many :units, through: :houses
   has_many :contracts, through: :units
+  has_many :expenses, through: :units
+  has_many :expenses, through: :houses
 end

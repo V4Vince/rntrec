@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :expenses, except: [:new, :edit]
   resources :contracts, except: [:new, :edit]
   resources :units, except: [:new, :edit]
   resources :houses, except: [:new, :edit]
