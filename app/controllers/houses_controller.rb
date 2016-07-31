@@ -52,12 +52,12 @@ class HousesController < ProtectedController
   private
 
     def set_house
-      # @house = House.find(params[:id])
-      @house = current_user.houses.find(params[:id])
+      @house = House.find(params[:id])
+      # @house = current_user.houses.find(params[:id])
     end
 
     def house_params
-      params.require(:houses).permit(:street_name, :num_units, :purchase_price, :current_price, :user_id)
+      params.require(:house).permit(:street_name, :num_units, :purchase_price, :current_price, :user_id)
     end
 
 end

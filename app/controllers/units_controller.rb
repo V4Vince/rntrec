@@ -56,6 +56,6 @@ class UnitsController < ProtectedController
     end
 
     def unit_params
-      params.require(:units).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking, :expense, :house_id)
+      params.require(:unit).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking, :expense, :house_id)
     end
 end
