@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727172026) do
+ActiveRecord::Schema.define(version: 20160801194701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160727172026) do
   add_index "expenses", ["unit_id"], name: "index_expenses_on_unit_id", using: :btree
 
   create_table "houses", force: :cascade do |t|
-    t.text     "street_name"
+    t.text     "street_name",    null: false
     t.integer  "num_units"
     t.integer  "purchase_price"
     t.integer  "current_price"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160727172026) do
   add_index "houses", ["user_id"], name: "index_houses_on_user_id", using: :btree
 
   create_table "units", force: :cascade do |t|
-    t.text     "unit_num"
+    t.text     "unit_num",      null: false
     t.integer  "num_bedrooms"
     t.integer  "num_bathrooms"
     t.integer  "num_parking"
