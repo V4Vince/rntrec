@@ -1,10 +1,11 @@
-class ContractsController < ProtectedController
+# class ContractsController < ProtectedController
+class ContractsController < OpenReadController
   before_action :set_contract, only: [:show, :update, :destroy]
 
   # GET /units/1contracts
   # GET /units/1/contracts.json
   def index
-    @contracts = current_user.contracts.all
+    @contracts = Contract.all
     # @contract = Contract.where("unit_id = ?", params[:unit_id])
 
     render json: @contracts
@@ -13,13 +14,13 @@ class ContractsController < ProtectedController
   # GET /contracts/1
   # GET /contracts/1.json
   def show
-    render json: @contract
+    render json: Contract.find(params[:id])
   end
 
   # POST /contracts
   # POST /contracts.json
   def create
-    @contract = Contract.create(contract_params)
+    @contract = current_user.units.contracts.create(contract_params)
 
     # Unit has_one contract therefore build_contract must be called on Unit
     # @contract = Unit.find(params[:unit_id]).build_contract(contract_params)
