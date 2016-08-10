@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOKEN=BAhJIiVmYzU0NmUzMmNmYWU5ZTlhNDM3NDVkZjJkZjA3NmYyZQY6BkVG--2ea46e116462b7ccba8e339b1a5d5804f1d8af7d
+TOKEN=BAhJIiVlZWY4YTM1MWFkMWY5NGUyNzY3MTRlZDc1ZThiMGYzNwY6BkVG--2d3623e7c9467e30a5a440706b55fe040dea7300
 
 curl --include --request GET http://localhost:3000/contracts \
   --header "Authorization: Token token=$TOKEN"
