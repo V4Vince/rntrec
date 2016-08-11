@@ -57,7 +57,7 @@ class HousesController < ProtectedController
     end
 
     def house_params
-      params.require(:house).permit(:street_name, :num_units, :purchase_price, :current_price, :user_id)
+      params.require(:house).permit(:street_name, :num_units, :purchase_price, :current_price, :mortgage, :taxes, :insurance, :user_id)
     end
 
 end
