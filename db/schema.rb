@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801194701) do
+ActiveRecord::Schema.define(version: 20160815004135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,15 +42,14 @@ ActiveRecord::Schema.define(version: 20160801194701) do
     t.text     "expense_for",         null: false
     t.text     "expense_description"
     t.integer  "expense_amount",      null: false
-    t.date     "expense_date",        null: false
-    t.integer  "house_id",            null: false
-    t.integer  "unit_id",             null: false
+    t.integer  "expenseable_id"
+    t.string   "expenseable_type"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.date     "expense_date",        null: false
   end
 
-  add_index "expenses", ["house_id"], name: "index_expenses_on_house_id", using: :btree
-  add_index "expenses", ["unit_id"], name: "index_expenses_on_unit_id", using: :btree
+  add_index "expenses", ["expenseable_type", "expenseable_id"], name: "index_expenses_on_expenseable_type_and_expenseable_id", using: :btree
 
   create_table "houses", force: :cascade do |t|
     t.text     "street_name",    null: false
@@ -93,8 +92,6 @@ ActiveRecord::Schema.define(version: 20160801194701) do
 
   add_foreign_key "contracts", "units"
   add_foreign_key "examples", "users"
-  add_foreign_key "expenses", "houses"
-  add_foreign_key "expenses", "units"
   add_foreign_key "houses", "users"
   add_foreign_key "units", "houses"
 end

@@ -18,7 +18,7 @@ class ExpensesController < ProtectedController
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = current_user.expenses.build(expense_params)
+    @expense = Expense.new(expense_params)
 
     if @expense.save
       render json: @expense, status: :created, location: @expense
@@ -29,16 +29,15 @@ class ExpensesController < ProtectedController
 
   # PATCH/PUT /expenses/1
   # PATCH/PUT /expenses/1.json
-  # User not allowed to update an expense
-  # def update
-  #   @expense = Expense.find(params[:id])
-  #
-  #   if @expense.update(expense_params)
-  #     head :no_content
-  #   else
-  #     render json: @expense.errors, status: :unprocessable_entity
-  #   end
-  # end
+  def update
+    @expense = Expense.find(params[:id])
+
+    if @expense.update(expense_params)
+      head :no_content
+    else
+      render json: @expense.errors, status: :unprocessable_entity
+    end
+  end
 
   # DELETE /expenses/1
   # DELETE /expenses/1.json
@@ -55,6 +54,6 @@ class ExpensesController < ProtectedController
     end
 
     def expense_params
-      params.require(:expense).permit(:expense_for, :expense_description, :expense_amount, :expense_date, :house_id, :unit_id)
+      params.require(:expense).permit(:expense_for, :expense_description, :expense_amount, :expense_date)
     end
 end
