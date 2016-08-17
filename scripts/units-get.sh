@@ -1,5 +1,6 @@
 #!/bin/bash
 
-TOKEN=BAhJIiVlZWY4YTM1MWFkMWY5NGUyNzY3MTRlZDc1ZThiMGYzNwY6BkVG--2d3623e7c9467e30a5a440706b55fe040dea7300
-curl --include --request GET http://localhost:3000/units \
+TOKEN=BAhJIiU1MWEzM2M0MTE1YWY3ODFkMTMyY2MwNGFjODVkMGRjYQY6BkVG--f50cd09acf01146c74823a82ae78b689adfe1756
+ID=16
+curl --include --request GET http://localhost:3000/houses/$ID/units \
   --header "Authorization: Token token=$TOKEN"

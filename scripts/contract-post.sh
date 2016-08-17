@@ -1,14 +1,16 @@
 #!/bin/bash
-TOKEN=BAhJIiVmYzU0NmUzMmNmYWU5ZTlhNDM3NDVkZjJkZjA3NmYyZQY6BkVG--2ea46e116462b7ccba8e339b1a5d5804f1d8af7d
 
-curl --include --request POST http://localhost:3000/contracts \
+TOKEN=BAhJIiU1MWEzM2M0MTE1YWY3ODFkMTMyY2MwNGFjODVkMGRjYQY6BkVG--f50cd09acf01146c74823a82ae78b689adfe1756
+ID=70
+curl --include --request POST http://localhost:3000/units/$ID/contracts \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "contracts": {
+      "start": "20160312",
+      "end": "20160320",
       "num_tenants": "2",
       "rent": "2500",
-      "security": "7500",
-      "unit_id": "6"
+      "security": "7500"
     }
   }'
