@@ -1,11 +1,13 @@
 class UnitsController < ProtectedController
 # class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :update, :destroy]
+  before_action :set_house, only: [:index, :create]
 
   # GET /houses/1/units
   # GET /houses/1/units.json
   def index
-    @units = current_user.units.all
+    #all units from current house
+    @units = @house.units
     # @units = Unit.where("house_id = ?", params[:house_id])
 
     render json: @units
@@ -20,7 +22,7 @@ class UnitsController < ProtectedController
   # POST /houses/1/units
   # POST /houses/1/units.json
   def create
-    @unit = current_user.units.build(unit_params)
+    @unit = @house.units.build(unit_params)
     # @unit = House.find(params[:house_id]).units.build(unit_params)
     if @unit.save
       render json: @unit, status: :created, location: @unit
@@ -55,7 +57,12 @@ class UnitsController < ProtectedController
       @unit = Unit.find(params[:id])
     end
 
+    def set_house
+      @house = House.find(params[:house_id])
+      # @house = current_user.houses.find(params[:id])
+    end
+
     def unit_params
-      params.require(:unit).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking, :house_id)
+      params.require(:unit).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking)
     end
 end
