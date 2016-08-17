@@ -1,10 +1,11 @@
 class ExpensesController < ProtectedController
   before_action :set_expense, only: [:show, :update, :destroy]
+  before_action :get_parent, only: [:index, :create]
 
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = current_user.expenses.all
+    @expenses = @parent.expenses.all
 
     render json: @expenses
   end
@@ -15,10 +16,10 @@ class ExpensesController < ProtectedController
     render json: @expense
   end
 
-  # POST /expenses
-  # POST /expenses.json
+  # POST /units/1/expenses
+  # POST /units/1/expenses.json
   def create
-    @expense = Expense.new(expense_params)
+    @expense = @parent.expenses.build(expense_params)
 
     if @expense.save
       render json: @expense, status: :created, location: @expense
@@ -51,6 +52,15 @@ class ExpensesController < ProtectedController
 
     def set_expense
       @expense = Expense.find(params[:id])
+    end
+
+    #determines if the parent model is House or Unit
+    def get_parent
+      if params[:house_id].present?
+        @parent = House.find(params[:house_id])
+      elsif params[:unit_id].present?
+        @parent = Unit.find(params[:unit_id])
+      end
     end
 
     def expense_params

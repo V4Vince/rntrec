@@ -59,7 +59,6 @@ class UnitsController < ProtectedController
 
     def set_house
       @house = House.find(params[:house_id])
-      # @house = current_user.houses.find(params[:id])
     end
 
     def unit_params
