@@ -1,14 +1,16 @@
-class HousesController < ProtectedController
-# class HousesController < ApplicationController
+# class HousesController < ProtectedController
+class HousesController < ApplicationController
   before_action :set_house, only: [:show, :update, :destroy]
 
   # GET /houses
   # GET /houses.json
   def index
-    @houses = current_user.houses.all
-    # @houses = House.all
+    # @houses = current_user.houses.all
+    @houses = House.all
+    #side loads association in one request
 
-    render json: @houses
+    # render json: @houses
+    render json: @houses.includes([:units, :expenses]), include: ['units', 'expenses']
   end
 
   # GET /houses/1
