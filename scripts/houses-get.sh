@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOKEN=BAhJIiVmZWMwY2U2MmQ4OWUzZDZkZjcxODYwNTc4NmEwZWYyMQY6BkVG--0b36197b6c59ff66d7c904b8e827441e0b8d23c8
+TOKEN=BAhJIiU2NGU0N2JiM2M3MzdhYWFiNDBmOWQ5ZjMwZTcxMmVkMgY6BkVG--acfc44b82a8399a421b0ba04af8a8901d5fc5aef
 
 curl --include --request GET http://localhost:3000/houses/ \
   --header "Authorization: Token token=$TOKEN"
