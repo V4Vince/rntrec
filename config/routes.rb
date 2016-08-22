@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   resources :expenses, only: [:destroy, :show]
-  resources :contracts, only: [:destroy, :show, :index]
+  resources :contracts, only: [:create, :destroy, :show, :index]
 
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOKEN=BAhJIiVkMDUyNmRmZjMwZDYzOWU3OGJiYjlkMDczNjZiN2UyOAY6BkVG--9ad3b8c2bc404db69cab8c4eb323311c6f442e0a
+TOKEN=BAhJIiU5MzI2YjBmYTU1YThhZmYxY2EwMTYwZmI1NTJjMDk1MwY6BkVG--59cd7dfbc4f1b9756cc3a8f66e1a91bd45a61d95
 ID=69
 curl --include --request POST http://localhost:3000/units/$ID/expenses \
   --header "Content-Type: application/json" \
@@ -14,7 +14,7 @@ curl --include --request POST http://localhost:3000/units/$ID/expenses \
     }
   }'
 
-  TOKEN=BAhJIiU0NzU2Yzc0MDIwNTAyNjM0M2VjMWQ2OTYwNTlkZGRmZAY6BkVG--35ee7d4f65baea24163ee47a9d306528caf23b1f
+  TOKEN=BAhJIiU5MzI2YjBmYTU1YThhZmYxY2EwMTYwZmI1NTJjMDk1MwY6BkVG--59cd7dfbc4f1b9756cc3a8f66e1a91bd45a61d95
   ID=16
   curl --include --request POST http://localhost:3000/units/$ID/expenses \
     --header "Content-Type: application/json" \

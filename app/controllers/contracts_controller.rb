@@ -1,12 +1,11 @@
 class ContractsController < ProtectedController
 # class ContractsController < OpenReadController
   before_action :set_contract, only: [:show, :update, :destroy]
-  before_action :set_unit, only: [:index, :create]
 
   # GET /units/1/contracts
   # GET /units/1/contracts.json
   def index
-    @contracts = @unit.contract
+    @contracts = current_user.contracts
     # @contract = Contract.where("unit_id = ?", params[:unit_id])
 
     render json: @contracts
@@ -22,7 +21,7 @@ class ContractsController < ProtectedController
   # POST /units/1/contracts.json
   #since unit has_one contract, .create/.build cannot be called on unit. Instead, call .create_contract
   def create
-    @contract = @unit.create_contract(contract_params)
+    @contract = Contract.new(contract_params)
 
     if @contract.save
       render json: @contract, status: :created, location: @contract
@@ -62,6 +61,6 @@ class ContractsController < ProtectedController
     end
 
     def contract_params
-      params.require(:contracts).permit(:start, :end, :num_tenants, :rent, :security)
+      params.require(:contracts).permit(:start, :end, :num_tenants, :rent, :security, :unit_id)
     end
 end
