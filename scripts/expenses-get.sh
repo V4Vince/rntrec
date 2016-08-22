@@ -1,12 +1,12 @@
 #!/bin/bash
 
-TOKEN=BAhJIiUzNWFlYWRjMDY1MGYxZWEwOTFiMDBkMTc1OTkzYWNlMQY6BkVG--7a777c5cf0ab5738575f387da388fe040b88c02d
+TOKEN=BAhJIiVkMDUyNmRmZjMwZDYzOWU3OGJiYjlkMDczNjZiN2UyOAY6BkVG--9ad3b8c2bc404db69cab8c4eb323311c6f442e0a
 ID=16
 curl --include --request GET http://localhost:3000/houses/$ID/expenses \
   --header "Authorization: Token token=$TOKEN"
 
 
-TOKEN=BAhJIiUzNWFlYWRjMDY1MGYxZWEwOTFiMDBkMTc1OTkzYWNlMQY6BkVG--7a777c5cf0ab5738575f387da388fe040b88c02d
+TOKEN=BAhJIiVkMDUyNmRmZjMwZDYzOWU3OGJiYjlkMDczNjZiN2UyOAY6BkVG--9ad3b8c2bc404db69cab8c4eb323311c6f442e0a
 ID=70
 curl --include --request GET http://localhost:3000/units/$ID/expenses \
   --header "Authorization: Token token=$TOKEN"

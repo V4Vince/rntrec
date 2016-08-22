@@ -1,13 +1,13 @@
 class UnitsController < ProtectedController
 # class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :update, :destroy]
-  before_action :set_house, only: [:index, :create]
+  # before_action :set_house, only: [:index, :create]
 
   # GET /houses/1/units
   # GET /houses/1/units.json
   def index
     #all units from current house
-    @units = @house.units
+    @units = current_user.units
     # @units = Unit.where("house_id = ?", params[:house_id])
 
     render json: @units.includes([:expenses, :contract]), include: ['expenses', 'contract']
@@ -16,13 +16,13 @@ class UnitsController < ProtectedController
   # GET /units/1
   # GET /units/1.json
   def show
-    render json: Unit.find(params[:id])
+    render json: @unit, include: ['expenses', 'contract']
   end
 
   # POST /houses/1/units
   # POST /houses/1/units.json
   def create
-    @unit = @house.units.build(unit_params)
+    @unit = current_user.units.build(unit_params)
     # @unit = House.find(params[:house_id]).units.build(unit_params)
     if @unit.save
       render json: @unit, status: :created, location: @unit
@@ -62,6 +62,6 @@ class UnitsController < ProtectedController
     end
 
     def unit_params
-      params.require(:unit).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking)
+      params.require(:unit).permit(:unit_num, :num_bedrooms, :num_bathrooms, :num_parking, :house_id)
     end
 end

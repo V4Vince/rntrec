@@ -15,7 +15,8 @@ class HousesController < ProtectedController
   # GET /houses/1
   # GET /houses/1.json
   def show
-    render json: House.find(params[:id])
+
+    render json: @house, include: ['units', 'expenses']
   end
 
   # POST /houses
