@@ -7,9 +7,8 @@ class HousesController < ProtectedController
   def index
     @houses = current_user.houses.all
     # @houses = House.all
-    #side loads association in one request
 
-    # render json: @houses
+    #side loads association in one request
     render json: @houses.includes([:units, :expenses]), include: ['units', 'expenses']
   end
 

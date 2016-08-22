@@ -10,7 +10,6 @@ class UnitsController < ProtectedController
     @units = @house.units
     # @units = Unit.where("house_id = ?", params[:house_id])
 
-    # render json: @units
     render json: @units.includes([:expenses, :contract]), include: ['expenses', 'contract']
   end
 
