@@ -16,7 +16,7 @@ class UnitsController < ProtectedController
   # GET /units/1
   # GET /units/1.json
   def show
-    render json: @unit, include: ['expenses', 'contract']
+    render json: @unit, include: ['house', 'expenses', 'contract']
   end
 
   # POST /houses/1/units

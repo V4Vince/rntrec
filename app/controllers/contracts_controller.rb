@@ -61,6 +61,6 @@ class ContractsController < ProtectedController
     end
 
     def contract_params
-      params.require(:contracts).permit(:start, :end, :num_tenants, :rent, :security, :unit_id)
+      params.require(:contract).permit(:start, :end, :num_tenants, :rent, :security, :unit_id)
     end
 end

@@ -3,6 +3,7 @@ class UnitSerializer < ActiveModel::Serializer
 
   has_many :expenses
   has_one :contract
+  belongs_to :house
   #serializing house will cause ember to throw an error after creating a unit.
   # :house
 end
